@@ -44,7 +44,7 @@ def generate_launch_description():
     return LaunchDescription([
         declare_gui,
         declare_world,
-        set_gz_resource_path,  # <-- ADD THIS LINE
+        set_gz_resource_path,
         set_software_rendering,
         ignition_gazebo
     ])
