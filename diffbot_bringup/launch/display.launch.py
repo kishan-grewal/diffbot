@@ -14,12 +14,19 @@ def generate_launch_description():
     robot_description_config = xacro.process_file(xacro_file)
     robot_description = {'robot_description': robot_description_config.toxml()}
     
-    # Robot State Publisher takes in xml
+    # Robot State Publisher takes in urdf xml and jsp /joint_states to compute TF tree
     rsp_node = Node(
         package='robot_state_publisher',
         executable='robot_state_publisher',
         output='screen',
         parameters=[robot_description]
+    )
+
+    # Joint State Publisher publishes fake data to /joint_states for visualisation
+    jsp_node = Node(
+        package='joint_state_publisher',
+        executable='joint_state_publisher',
+        name='joint_state_publisher'
     )
     
     # Launch rviz with no config
@@ -33,5 +40,6 @@ def generate_launch_description():
     # Launch nodes
     return LaunchDescription([
         rsp_node,
+        jsp_node,
         rviz_node
     ])
