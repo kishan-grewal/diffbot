@@ -11,11 +11,12 @@ find_package(ament_cmake REQUIRED)
 # further dependencies manually.
 # find_package(<dependency> REQUIRED)
 
-# Install URDF files for bringup to use
+# Install files for bringup to use
 install (
-  DIRECTORY urdf
+  DIRECTORY rviz urdf worlds
   DESTINATION share/${PROJECT_NAME}
 )
+
 
 if(BUILD_TESTING)
   find_package(ament_lint_auto REQUIRED)
