@@ -22,11 +22,11 @@ def generate_launch_description():
         parameters=[robot_description]
     )
 
-    # Joint State Publisher publishes fake data to /joint_states for visualisation
+    # Joint State Publisher GUI publishes fake data to /joint_states for visualisation
     jsp_node = Node(
-        package='joint_state_publisher',
-        executable='joint_state_publisher',
-        name='joint_state_publisher'
+        package='joint_state_publisher_gui',
+        executable='joint_state_publisher_gui',
+        name='joint_state_publisher_gui'
     )
     
     # Launch rviz with no config
