@@ -27,14 +27,6 @@ def generate_launch_description():
         output='screen'
     )
 
-    # Joint State Publisher (placeholder until ros2_control is added)
-    joint_state_publisher = Node(
-        package='joint_state_publisher',
-        executable='joint_state_publisher',
-        parameters=[{'use_sim_time': use_sim_time}],
-        output='screen'
-    )
-
     # Spawn entity in Ignition Gazebo
     spawn_entity = Node(
         package='ros_gz_sim',
@@ -48,6 +40,5 @@ def generate_launch_description():
     return LaunchDescription([
         declare_use_sim_time,
         robot_state_publisher,
-        joint_state_publisher,  # placeholder
         spawn_entity
     ])
