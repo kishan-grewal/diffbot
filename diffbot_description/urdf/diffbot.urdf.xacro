@@ -2,6 +2,7 @@
 <robot name="diffbot" xmlns:xacro="http://www.ros.org/wiki/xacro">
 
     <xacro:include filename="diffbot.core.xacro" />
+    <xacro:include filename="diffbot.gazebo.xacro" />
     <xacro:include filename="diffbot.ros2_control.xacro" />
 
 </robot>

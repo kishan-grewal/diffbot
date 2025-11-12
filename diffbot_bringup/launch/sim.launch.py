@@ -1,5 +1,5 @@
 from launch import LaunchDescription
-from launch.actions import IncludeLaunchDescription, DeclareLaunchArgument
+from launch.actions import IncludeLaunchDescription, DeclareLaunchArgument, TimerAction
 from launch.launch_description_sources import PythonLaunchDescriptionSource
 from launch.substitutions import LaunchConfiguration
 from ament_index_python.packages import get_package_share_directory
@@ -56,4 +56,17 @@ def generate_launch_description():
                 'use_sim_time': use_sim_time
             }.items()
         ),
+
+        # Spawn controllers after a delay (give Gazebo time to load robot)
+        TimerAction(
+            period=3.0,
+            actions=[
+                IncludeLaunchDescription(
+                    PythonLaunchDescriptionSource(os.path.join(launch_dir, 'controllers.launch.py')),
+                    launch_arguments={
+                        'use_sim_time': use_sim_time
+                    }.items()
+                )
+            ]
+        )
     ])
