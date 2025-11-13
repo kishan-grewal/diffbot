@@ -34,7 +34,7 @@ diff_drive_controller:
     use_stamped_vel: false
 
     velocity_rolling_window_size: 10
-    position_feedback: true
+    position_feedback: false
 
     linear.x.has_velocity_limits: true
     linear.x.has_acceleration_limits: true
